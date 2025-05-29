@@ -36,12 +36,12 @@ class Settings(BaseSettings):
     )
 
     SCHEMA_NAME: str = Field(
-        default="Telegram User",
+        default="Telegram Chats",
         description="Name of the schema"
     )
 
     SCHEMA_VERSION: str = Field(
-        default="0.0.1",
+        default="1.0.0",
         description="Version of the schema"
     )
 
