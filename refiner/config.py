@@ -26,7 +26,7 @@ class Settings(BaseSettings):
     )
 
     SCHEMA_NAME: str = Field(
-        default="Telegram Chats",
+        default="Telegram Chats VPSL",
         description="Name of the schema"
     )
 
