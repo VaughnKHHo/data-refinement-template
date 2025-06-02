@@ -20,16 +20,6 @@ class Settings(BaseSettings):
         description="Key to symmetrically encrypt the refinement. This is derived from the original file encryption key"
     )
 
-    # PINATA_API_KEY: Optional[str] = Field(
-    #     default=None,
-    #     description="Pinata API key"
-    # )
-
-    # PINATA_API_SECRET: Optional[str] = Field(
-    #     default=None,
-    #     description="Pinata API secret"
-    # )
-
     PINATA_API_JWT: Optional[str] = Field(
         default="",
         description="Pinata API JWT"
