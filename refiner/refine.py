@@ -25,7 +25,7 @@ class Refiner:
             if os.path.splitext(input_file)[1].lower() == '.json':
                 with open(input_file, 'r') as f:
                     input_data = json.load(f)
-                    
+
                     # Determine which transformer to use based on source field
                     transformer = None
                     if 'source' in input_data:
@@ -41,11 +41,11 @@ class Refiner:
                     else:
                         logging.warning(f"No source field found in {input_filename}, defaulting to MinerTransformer")
                         transformer = MinerTransformer(self.db_path)
-                    
+
                     # Process the data
                     transformer.process(input_data)
                     logging.info(f"Transformed {input_filename}")
-                    
+
                     # Create a schema based on the SQLAlchemy schema
                     schema = OffChainSchema(
                         name=settings.SCHEMA_NAME,
@@ -55,18 +55,21 @@ class Refiner:
                         schema=transformer.get_schema()
                     )
                     output.schema = schema
-                        
+
                     # Upload the schema to IPFS
                     schema_file = os.path.join(settings.OUTPUT_DIR, 'schema.json')
                     with open(schema_file, 'w') as f:
                         json.dump(schema.model_dump(), f, indent=4)
                         schema_ipfs_hash = upload_json_to_ipfs(schema.model_dump())
                         logging.info(f"Schema uploaded to IPFS with hash: {schema_ipfs_hash}")
-                    
+
                     # Encrypt and upload the database to IPFS
                     encrypted_path = encrypt_file(settings.REFINEMENT_ENCRYPTION_KEY, self.db_path)
                     ipfs_hash = upload_file_to_ipfs(encrypted_path)
-                    output.refinement_url = f"https://ipfs.vana.org/ipfs/{ipfs_hash}"
+
+                    # output.refinement_url = f"https://gateway.pinata.cloud/ipfs/{ipfs_hash}"
+                    output.refinement_url = f"red-accurate-hookworm-520.mypinata.cloud/ipfs/{ipfs_hash}"
+
                     continue
 
         logging.info("Data transformation completed successfully")
