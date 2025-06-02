@@ -67,8 +67,7 @@ class Refiner:
                     encrypted_path = encrypt_file(settings.REFINEMENT_ENCRYPTION_KEY, self.db_path)
                     ipfs_hash = upload_file_to_ipfs(encrypted_path)
 
-                    # output.refinement_url = f"https://gateway.pinata.cloud/ipfs/{ipfs_hash}"
-                    output.refinement_url = f"https://red-accurate-hookworm-520.mypinata.cloud/ipfs/{ipfs_hash}"
+                    output.refinement_url = f"https://gateway.pinata.cloud/ipfs/{ipfs_hash}"
 
                     continue
 
