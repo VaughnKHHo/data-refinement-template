@@ -68,7 +68,7 @@ class Refiner:
                     ipfs_hash = upload_file_to_ipfs(encrypted_path)
 
                     # output.refinement_url = f"https://gateway.pinata.cloud/ipfs/{ipfs_hash}"
-                    output.refinement_url = f"red-accurate-hookworm-520.mypinata.cloud/ipfs/{ipfs_hash}"
+                    output.refinement_url = f"https://red-accurate-hookworm-520.mypinata.cloud/ipfs/{ipfs_hash}"
 
                     continue
 
